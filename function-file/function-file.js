@@ -9,3 +9,9 @@ Office.initialize = reason => {
 };
 
 // Add any ui-less function here
+
+console.log('In function-file.js');
+
+function saveMail(event) {
+  console.log('EVENT: ', event);
+}
