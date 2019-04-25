@@ -91,9 +91,21 @@
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>saveMail</FunctionName>
                   </Action>
-                  <!-- <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="messageReadTaskPaneUrl" />
-                  </Action> -->
+                </Control>
+                <Control xsi:type="Button" id="settings">
+                  <Label resid="settingsLabel"/>
+                  <Supertip>
+                    <Title resid="settingsTitle"/>
+                    <Description resid="settingsDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="settingsAction" />
+                  </Action>
                 </Control>
                 <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
               </Group>
@@ -113,15 +125,19 @@
       <bt:Urls>
         <bt:Url id="functionFile" DefaultValue="https://localhost:3000/function-file/function-file.html"/>
         <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://localhost:3000/index.html"/>
+        <bt:Url id="settingsAction" DefaultValue="https://localhost:3000/settings/settings.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="My Add-in Group"/>
         <bt:String id="customTabLabel"  DefaultValue="My Add-in Tab"/>
         <bt:String id="paneReadButtonLabel" DefaultValue="Save email"/>
         <bt:String id="paneReadSuperTipTitle" DefaultValue="Save email"/>
+        <bt:String id="settingsLabel" DefaultValue="Settings"/>
+        <bt:String id="settingsTitle" DefaultValue="Settings"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="paneReadSuperTipDescription" DefaultValue="Save email in Wice CRM."/>
+        <bt:String id="settingsDesc" DefaultValue="Wice CRM Credentials."/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
