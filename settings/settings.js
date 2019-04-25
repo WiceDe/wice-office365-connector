@@ -52,7 +52,6 @@
         console.log('SETTINGS clicked ...');
         // Display settings dialog
         var url = new URI('../credentials/dialog.html').absoluteTo(window.location).toString();
-        console.log('URL: ', url);
         if (config) {
           // If the add-in has already been configured, pass the existing values
           // to the dialog
@@ -74,26 +73,26 @@
       })
     });
   };
-
-  function loadGists(user) {
-    $('#error-display').hide();
-    $('#not-configured').hide();
-    $('#gist-list-container').show();
-
-    getUserGists(user, function(gists, error) {
-      if (error) {
-
-      } else {
-        buildGistList($('#gist-list'), gists, onGistSelected);
-      }
-    });
-  }
-
-  function onGistSelected() {
-    $('.ms-ListItem').removeClass('is-selected');
-    $(this).addClass('is-selected');
-    $('#insert-button').removeAttr('disabled');
-  }
+  //
+  // function loadGists(user) {
+  //   $('#error-display').hide();
+  //   $('#not-configured').hide();
+  //   $('#gist-list-container').show();
+  //
+  //   getUserGists(user, function(gists, error) {
+  //     if (error) {
+  //
+  //     } else {
+  //       buildGistList($('#gist-list'), gists, onGistSelected);
+  //     }
+  //   });
+  // }
+  //
+  // function onGistSelected() {
+  //   $('.ms-ListItem').removeClass('is-selected');
+  //   $(this).addClass('is-selected');
+  //   $('#insert-button').removeAttr('disabled');
+  // }
 
   function showError(error) {
     $('#not-configured').hide();
@@ -107,7 +106,7 @@
     setConfig(config, function(result) {
       settingsDialog.close();
       settingsDialog = null;
-      loadGists(config.gitHubUserName);
+      // loadGists(config.gitHubUserName);
     });
   }
 

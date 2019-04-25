@@ -13,7 +13,6 @@
         } else {
           console.log('FLAG 2');
           var config = getConfig();
-          console.log('CONFIG: ', config);
           // See if the config values were passed
           // If so, pre-populate the values
           // var user = getParameterByName('gitHubUserName');
@@ -64,29 +63,14 @@
         console.log('CREDENTIALS: ', credentials);
         console.log('DONE CLICKED ...');
 
-        // console.log('HERE: ', Office.context.ui.displayDialogAsync());
-
-        // var settingsDialog;
-        //
-        // var url = new URI('/').absoluteTo(window.location).toString();
-        // var dialogOptions = {
-        //   width: 20,
-        //   height: 40,
-        //   displayInIframe: true
-        // };
-        //
-        // Office.context.ui.displayDialogAsync(url, dialogOptions, function(result) {
-        //   settingsDialog = result.value;
-        //   settingsDialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, receiveMessage);
-        //   settingsDialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogEventReceived, dialogClosed);
-        // });
-
         setConfig(credentials, () => {
           // settingsDialog.close();
           // settingsDialog = null;
           console.log('Credentials saved...');
           return;
         });
+
+        // sendMessage('true');
 
         // var settings = {};
         //
@@ -127,9 +111,9 @@
   //   $('#settings-done').removeAttr('disabled');
   // }
   //
-  // function sendMessage(message) {
-  //   Office.context.ui.messageParent(message);
-  // }
+  function sendMessage(message) {
+    Office.context.ui.messageParent(message);
+  }
 
   function getParameterByName(name, url) {
     if (!url) {
