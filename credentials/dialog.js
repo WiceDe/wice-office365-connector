@@ -52,12 +52,88 @@
       // values back to the caller as a serialized
       // object.
       $('#settings-done').on('click', async function() {
-        let credentials = {
+        var credentials = {
           wiceServer: $('#wice-server').val(),
           mandant: $('#mandant').val(),
           username: $('#username').val(),
           password: $('#password').val(),
         };
+        var url = $('#wice-server').val();
+
+        var data = {
+          method: "login",
+          mandant_name: $('#mandant').val(),
+          username: $('#username').val(),
+          password: $('#password').val(),
+        };
+
+        $.ajax({
+          type: "GET",
+          url: 'https://jsonplaceholder.typicode.com/todos',
+          dataType: 'json',
+          success: function(data, textStatus, jQxhr) {
+            console.log('Success');
+          },
+          error: function(jqXhr, textStatus, errorThrown) {
+            console.log('ERROR');
+          }
+        })
+
+        // $.ajax({
+        //   type: "GET",
+        //   url: 'https://jsonplaceholder.typicode.com/todos/',
+        //   dataType: 'json'
+        // }).done(function(gists) {
+        //   console.log('SUCCESS');
+        //   // callback(gists);
+        // }).fail(function(error) {
+        //   console.log(error);
+        //   console.log('ERROR');
+        //   // callback(null, error);
+        // });
+
+        // url = url + '/plugin/wp_wice_client_api_backend/json';
+        // var input = "method=login&mandant_name=" + data.mandant_name + "&username=" + data.username + "&password=" + data.password;
+        // console.log('URL: ', url);
+        // console.log('INPUT: ', input);
+        //
+        // var browserForm = new FormData();
+        // browserForm.append('method', 'login');
+        // browserForm.append('mandant_name', data.mandant_name);
+        // browserForm.append('username', data.username);
+        // browserForm.append('password', data.password);
+        //
+        // var http = new XMLHttpRequest();
+        // http.open('POST', url, true);
+        // //Send the proper header information along with the request
+        // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // http.onreadystatechange = function() { //Call a function when the state changes.
+        //   if (http.readyState == 4 && http.status == 200) {
+        //     console.log('SUCCESS');
+        //     alert(http.responseText);
+        //   }
+        //   console.log('FAIL');
+        // }
+        // http.send(browserForm);
+
+        // $.ajax({
+        //   type: "POST",
+        //   url: url,
+        //   contentType: false,
+        //   // dataType: 'json',
+        //   // contentType: "application/x-www-form-urlencoded",
+        //   // data: JSON.stringify(data),
+        //   data: input,
+        //   success: function(data, textStatus, jQxhr) {
+        //     console.log('SUCCESS!!!!!!!!!!!');
+        //   },
+        //   error: function(jqXhr, textStatus, errorThrown) {
+        //     // console.log(jqXhr);
+        //     // console.log(textStatus);
+        //     // console.log(errorThrown);
+        //     console.log('FAIL');
+        //   }
+        // });
 
         await setConfig(credentials, () => {
           // settingsDialog.close();
