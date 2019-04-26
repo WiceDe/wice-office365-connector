@@ -1,20 +1,10 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
 var config;
 var btnEvent;
 
 // The initialize function must be run each time a new page is loaded
-Office.initialize = reason => {
-
-};
+Office.initialize = function(reason) {};
 
 // Add any ui-less function here
-
-console.log('In function-file.js');
-
-
 function showError(error) {
   Office.context.mailbox.item.notificationMessages.replaceAsync('github-error', {
     type: 'errorMessage',
@@ -24,17 +14,29 @@ function showError(error) {
 
 var settingsDialog;
 
-function saveMail(event) {
-  console.log('MAIL ITEM: ', Office.context.mailbox.item);
-  // console.log('HERE', Office.context);
-  console.log('EVENT: ', event);
+async function saveMail(event) {
   config = getConfig();
 
-  // Check if the add-in has been configured
-  if (config && config.defaultGistId) {
-    // Get the default gist content and insert
-    try {
+  var emptyWiceServer = $.isEmptyObject(config.wiceServer);
+  var emptyMandant = $.isEmptyObject(config.mandant);
+  var emptyUsername = $.isEmptyObject(config.username);
+  var emptyPassword = $.isEmptyObject(config.password);
 
+  // Check if the add-in has been configured
+  if (!emptyWiceServer && !emptyMandant && !emptyUsername && !emptyPassword) {
+    Office.context.mailbox.item.body.getAsync(
+      'html', {
+        asyncContext: "This is passed to the callback"
+      },
+      function callback(result) {
+        console.log(config);
+        var url = config.wiceServer + "/pserv/base/thunderbird";
+        // console.log('URL: ', url);
+
+        //TODO: Save mail in wice
+        // console.log(result.value);
+      });
+    try {
       // getGist(config.defaultGistId, function(gist, error) {
       //   if (gist) {
       //     buildBodyContent(gist, function(content, error) {
@@ -60,12 +62,11 @@ function saveMail(event) {
     }
 
   } else {
-    console.log('IN ELSE');
     // Save the event object so we can finish up later
     btnEvent = event;
     // Not configured yet, display settings dialog with
     // warn=1 to display warning.
-    var url = new URI('../settings/dialog.html?warn=1 ').absoluteTo(window.location).toString();
+    var url = new URI('../credentials/dialog.html?warn=1 ').absoluteTo(window.location).toString();
     var dialogOptions = {
       width: 20,
       height: 40,
