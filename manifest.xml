@@ -27,8 +27,8 @@
   <SupportUrl DefaultValue="https://localhost:3000/support.html" />
   <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
   <AppDomains>
-    <AppDomain>AppDomain1</AppDomain>
-    <AppDomain>AppDomain2</AppDomain>
+    <AppDomain>https://jsonplaceholder.typicode.com</AppDomain>
+    <AppDomain>https://oihwice.wice-net.de</AppDomain>
     <AppDomain>AppDomain3</AppDomain>
   </AppDomains>
   <!--End Basic Settings. -->
