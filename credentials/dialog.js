@@ -8,10 +8,8 @@
         // Check if warning should be displayed
         var warn = getParameterByName('warn');
         if (warn) {
-          console.log('FLAG 1');
           $('.not-configured-warning').show();
         } else {
-          console.log('FLAG 2');
           var config = getConfig();
           // See if the config values were passed
           // If so, pre-populate the values
@@ -53,7 +51,7 @@
       // When the Done button is selected, send the
       // values back to the caller as a serialized
       // object.
-      $('#settings-done').on('click', function() {
+      $('#settings-done').on('click', async function() {
         let credentials = {
           wiceServer: $('#wice-server').val(),
           mandant: $('#mandant').val(),
@@ -61,16 +59,16 @@
           password: $('#password').val(),
         };
         console.log('CREDENTIALS: ', credentials);
-        console.log('DONE CLICKED ...');
 
-        setConfig(credentials, () => {
+        await setConfig(credentials, () => {
           // settingsDialog.close();
           // settingsDialog = null;
           console.log('Credentials saved...');
           return;
         });
 
-        // sendMessage('true');
+        await sendMessage(JSON.stringify(credentials));
+
 
         // var settings = {};
         //
@@ -111,8 +109,8 @@
   //   $('#settings-done').removeAttr('disabled');
   // }
   //
-  function sendMessage(message) {
-    Office.context.ui.messageParent(message);
+  async function sendMessage(message) {
+    await Office.context.ui.messageParent(message);
   }
 
   function getParameterByName(name, url) {
