@@ -1,7 +1,5 @@
 function getConfig() {
   var config = {};
-  console.log('GET CONFIG');
-
   config.wiceServer = Office.context.roamingSettings.get('wiceServer');
   config.mandant = Office.context.roamingSettings.get('mandant');
   config.username = Office.context.roamingSettings.get('username');
@@ -11,7 +9,6 @@ function getConfig() {
 }
 
 function setConfig(config, callback) {
-  console.log('SET CONFIG');
   Office.context.roamingSettings.set('wiceServer', config.wiceServer);
   Office.context.roamingSettings.set('mandant', config.mandant);
   Office.context.roamingSettings.set('username', config.username);

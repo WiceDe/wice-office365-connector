@@ -58,7 +58,6 @@
           username: $('#username').val(),
           password: $('#password').val(),
         };
-        console.log('CREDENTIALS: ', credentials);
 
         await setConfig(credentials, () => {
           // settingsDialog.close();
