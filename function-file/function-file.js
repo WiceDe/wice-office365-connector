@@ -14,7 +14,8 @@ function showError(error) {
 
 var settingsDialog;
 
-async function saveMail(event) {
+function insertDefaultGist(event) {
+
   config = getConfig();
 
   var emptyWiceServer = $.isEmptyObject(config.wiceServer);
@@ -24,49 +25,52 @@ async function saveMail(event) {
 
   // Check if the add-in has been configured
   if (!emptyWiceServer && !emptyMandant && !emptyUsername && !emptyPassword) {
+    // if (config && config.defaultGistId) {
     Office.context.mailbox.item.body.getAsync(
       'html', {
         asyncContext: "This is passed to the callback"
       },
       function callback(result) {
+        //TODO: Save email in wice
+        console.log(result.value);
         console.log(config);
         var url = config.wiceServer + "/pserv/base/thunderbird";
         // console.log('URL: ', url);
-
-        //TODO: Save mail in wice
-        // console.log(result.value);
+        saveMail();
       });
-    try {
-      // getGist(config.defaultGistId, function(gist, error) {
-      //   if (gist) {
-      //     buildBodyContent(gist, function(content, error) {
-      //       if (content) {
-      //         Office.context.mailbox.item.body.setSelectedDataAsync(content, {
-      //           coercionType: Office.CoercionType.Html
-      //         }, function(result) {
-      //           event.completed();
-      //         });
-      //       } else {
-      //         showError(error);
-      //         event.completed();
-      //       }
-      //     });
-      //   } else {
-      //     showError(error);
-      //     event.completed();
-      //   }
-      // });
-    } catch (err) {
-      showError(err);
-      event.completed();
-    }
+
+    // Get the default gist content and insert
+    // try {
+    //   getGist(config.defaultGistId, function(gist, error) {
+    //     if (gist) {
+    //       buildBodyContent(gist, function(content, error) {
+    //         if (content) {
+    //           Office.context.mailbox.item.body.setSelectedDataAsync(content, {
+    //             coercionType: Office.CoercionType.Html
+    //           }, function(result) {
+    //             event.completed();
+    //           });
+    //         } else {
+    //           showError(error);
+    //           event.completed();
+    //         }
+    //       });
+    //     } else {
+    //       showError(error);
+    //       event.completed();
+    //     }
+    //   });
+    // } catch (err) {
+    //   showError(err);
+    //   event.completed();
+    // }
 
   } else {
     // Save the event object so we can finish up later
     btnEvent = event;
     // Not configured yet, display settings dialog with
     // warn=1 to display warning.
-    var url = new URI('../credentials/dialog.html?warn=1 ').absoluteTo(window.location).toString();
+    var url = new URI('../settings/dialog.html?warn=1').absoluteTo(window.location).toString();
     var dialogOptions = {
       width: 20,
       height: 40,
