@@ -67,17 +67,31 @@
           password: $('#password').val(),
         };
 
+        var requestUrl = 'https://api.github.com/users/shterion/gists';
+        console.log(requestUrl);
         $.ajax({
-          type: "GET",
-          url: 'https://jsonplaceholder.typicode.com/todos',
-          dataType: 'json',
-          success: function(data, textStatus, jQxhr) {
-            console.log('Success');
-          },
-          error: function(jqXhr, textStatus, errorThrown) {
-            console.log('ERROR');
-          }
-        })
+          url: requestUrl,
+          dataType: 'json'
+        }).done(function(gists) {
+          console.log(gists);
+          // callback(gists);
+        }).fail(function(error) {
+          console.log('ERROR');
+          // callback(null, error);
+        });
+
+        // $.ajax({
+        //   type: "GET",
+        //   // url: 'https://jsonplaceholder.typicode.com/todos',
+        //   url: 'https://api.github.com/users/shterion/gists',
+        //   dataType: 'json',
+        //   success: function(data, textStatus, jQxhr) {
+        //     console.log('Success');
+        //   },
+        //   error: function(jqXhr, textStatus, errorThrown) {
+        //     console.log('ERROR');
+        //   }
+        // })
 
         // $.ajax({
         //   type: "GET",
