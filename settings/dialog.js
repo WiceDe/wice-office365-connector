@@ -21,24 +21,36 @@
             // console.log('TEST: ', $.isEmptyObject($('#wice-server').val()));
             // console.log('TRIMMED: ', $.trim($('#wice-server').val()).length);
 
-            if (emptyWiceServer !== '' && emptyMandant !== '' && emptyUsername !== '' && emptyPassword !== '') {
+            if (emptyWiceServer && emptyMandant && emptyUsername && emptyPassword) {
               $('#settings-done').removeAttr('disabled');
             }
           });
         } else {
           var config = getConfig();
+          console.log('CONFIG: ', config);
           $('#wice-server').val(config.wiceServer);
           $('#mandant').val(config.mandant);
           $('#username').val(config.username);
           $('#password').val(config.password);
 
-          var emptyWiceServer = $.isEmptyObject(config.wiceServer);
-          var emptyMandant = $.isEmptyObject(config.mandant);
-          var emptyUsername = $.isEmptyObject(config.username);
-          var emptyPassword = $.isEmptyObject(config.password);
+          // var emptyWiceServer = $.isEmptyObject(config.wiceServer);
+          // var emptyMandant = $.isEmptyObject(config.mandant);
+          // var emptyUsername = $.isEmptyObject(config.username);
+          // var emptyPassword = $.isEmptyObject(config.password);
 
           $('#settings-form').on('input', function() {
-            if (!emptyWiceServer && !emptyMandant && !emptyUsername && !emptyPassword) {
+            console.log('changed ...');
+            var emptyWiceServer = $('#wice-server').val();
+            var emptyMandant = $('#mandant').val();
+            var emptyUsername = $('#username').val();
+            var emptyPassword = $('#password').val();
+
+            // console.log(emptyWiceServer);
+            // console.log(emptyMandant);
+            // console.log(emptyUsername);
+            // console.log(emptyPassword);
+
+            if (emptyWiceServer && emptyMandant && emptyUsername && emptyPassword) {
               $('#settings-done').removeAttr('disabled');
             }
           });
