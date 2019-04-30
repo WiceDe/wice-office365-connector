@@ -1,7 +1,7 @@
 {
   "name": "wice-connector",
-  "description": "",
-  "author": "",
+  "description": "Office 365 Outlook Connector for Wice CRM ",
+  "author": "Wice GmbH",
   "version": "0.1.0",
   "scripts": {
     "start": "webpack-dev-server --mode development --https --key ./certs/server.key --cert ./certs/server.crt --cacert ./certs/ca.crt --port 3000",
