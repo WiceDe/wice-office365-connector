@@ -74,21 +74,7 @@
             <OfficeTab id="TabDefault">
               <Group id="msgComposeCmdGroup">
                 <Label resid="groupLabel"/>
-                <Control xsi:type="Button" id="msgComposeInsertGist">
-                  <Label resid="insertGistLabel"/>
-                  <Supertip>
-                    <Title resid="insertGistTitle"/>
-                    <Description resid="insertGistDesc"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="icon16"/>
-                    <bt:Image size="32" resid="icon32"/>
-                    <bt:Image size="80" resid="icon80"/>
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="insertGistPaneUrl"/>
-                  </Action>
-                </Control>
+
                 <Control xsi:type="Button" id="msgComposeInsertDefaultGist">
                   <Label resid="insertDefaultGistLabel"/>
                   <Supertip>
@@ -102,6 +88,21 @@
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>insertDefaultGist</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="msgComposeInsertGist">
+                  <Label resid="insertGistLabel"/>
+                  <Supertip>
+                    <Title resid="insertGistTitle"/>
+                    <Description resid="insertGistDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="insertGistPaneUrl"/>
                   </Action>
                 </Control>
               </Group>
