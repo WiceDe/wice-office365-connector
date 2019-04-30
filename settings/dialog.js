@@ -10,24 +10,9 @@
         var warn = getParameterByName('warn');
         if (warn) {
           $('.not-configured-warning').show();
-          $('#settings-form').on('input', function() {
-            var emptyWiceServer = $('#wice-server').val();
-            var emptyMandant = $('#mandant').val();
-            var emptyUsername = $('#username').val();
-            var emptyPassword = $('#password').val();
-
-            // var hasSpace = $('#wice-server').val().indexOf(' ') >= 0;
-            // console.log('HERE: ', hasSpace);
-            // console.log('TEST: ', $.isEmptyObject($('#wice-server').val()));
-            // console.log('TRIMMED: ', $.trim($('#wice-server').val()).length);
-
-            if (emptyWiceServer && emptyMandant && emptyUsername && emptyPassword) {
-              $('#settings-done').removeAttr('disabled');
-            }
-          });
+          validateFields();
         } else {
           var config = getConfig();
-          console.log('CONFIG: ', config);
           $('#wice-server').val(config.wiceServer);
           $('#mandant').val(config.mandant);
           $('#username').val(config.username);
@@ -37,23 +22,7 @@
           // var emptyMandant = $.isEmptyObject(config.mandant);
           // var emptyUsername = $.isEmptyObject(config.username);
           // var emptyPassword = $.isEmptyObject(config.password);
-
-          $('#settings-form').on('input', function() {
-            console.log('changed ...');
-            var emptyWiceServer = $('#wice-server').val();
-            var emptyMandant = $('#mandant').val();
-            var emptyUsername = $('#username').val();
-            var emptyPassword = $('#password').val();
-
-            // console.log(emptyWiceServer);
-            // console.log(emptyMandant);
-            // console.log(emptyUsername);
-            // console.log(emptyPassword);
-
-            if (emptyWiceServer && emptyMandant && emptyUsername && emptyPassword) {
-              $('#settings-done').removeAttr('disabled');
-            }
-          });
+          validateFields();
         }
       }
 
@@ -81,6 +50,19 @@
       });
     });
   };
+
+  function validateFields() {
+    $('#settings-form').on('input', function() {
+      var emptyWiceServer = $('#wice-server').val();
+      var emptyMandant = $('#mandant').val();
+      var emptyUsername = $('#username').val();
+      var emptyPassword = $('#password').val();
+
+      if (emptyWiceServer && emptyMandant && emptyUsername && emptyPassword) {
+        $('#settings-done').removeAttr('disabled');
+      }
+    });
+  }
 
   function sendMessage(message) {
     Office.context.ui.messageParent(message);

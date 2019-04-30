@@ -36,6 +36,7 @@ function insertDefaultGist(event) {
         console.log(result.value);
         console.log(config);
         // console.log('URL: ', url);
+        // Save mail functions is in helpers
         saveMail();
       });
 
