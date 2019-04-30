@@ -10,6 +10,21 @@
         var warn = getParameterByName('warn');
         if (warn) {
           $('.not-configured-warning').show();
+          $('#settings-form').on('input', function() {
+            var emptyWiceServer = $('#wice-server').val();
+            var emptyMandant = $('#mandant').val();
+            var emptyUsername = $('#username').val();
+            var emptyPassword = $('#password').val();
+
+            // var hasSpace = $('#wice-server').val().indexOf(' ') >= 0;
+            // console.log('HERE: ', hasSpace);
+            // console.log('TEST: ', $.isEmptyObject($('#wice-server').val()));
+            // console.log('TRIMMED: ', $.trim($('#wice-server').val()).length);
+
+            if (emptyWiceServer !== '' && emptyMandant !== '' && emptyUsername !== '' && emptyPassword !== '') {
+              $('#settings-done').removeAttr('disabled');
+            }
+          });
         } else {
           var config = getConfig();
           $('#wice-server').val(config.wiceServer);
@@ -17,10 +32,16 @@
           $('#username').val(config.username);
           $('#password').val(config.password);
 
-          // See if the config values were passed
-          // If so, pre-populate the values
-          // var user = getParameterByName('gitHubUserName');
-          // var gistId = getParameterByName('defaultGistId');
+          var emptyWiceServer = $.isEmptyObject(config.wiceServer);
+          var emptyMandant = $.isEmptyObject(config.mandant);
+          var emptyUsername = $.isEmptyObject(config.username);
+          var emptyPassword = $.isEmptyObject(config.password);
+
+          $('#settings-form').on('input', function() {
+            if (!emptyWiceServer && !emptyMandant && !emptyUsername && !emptyPassword) {
+              $('#settings-done').removeAttr('disabled');
+            }
+          });
         }
       }
 
@@ -32,6 +53,7 @@
           password: $('#password').val(),
         };
         var url = $('#wice-server').val();
+
 
         await createSession(credentials, async function(cookie, error) {
           credentials.cookie = cookie

@@ -31,10 +31,10 @@ function insertDefaultGist(event) {
         asyncContext: "This is passed to the callback"
       },
       function callback(result) {
-        //TODO: Save email in wice
+        var url = config.wiceServer + "/pserv/base/thunderbird";
+        // TODO: Save email in wice
         console.log(result.value);
         console.log(config);
-        var url = config.wiceServer + "/pserv/base/thunderbird";
         // console.log('URL: ', url);
         saveMail();
       });
