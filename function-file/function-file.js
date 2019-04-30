@@ -14,8 +14,7 @@ function showError(error) {
 
 var settingsDialog;
 
-function insertDefaultGist(event) {
-
+function saveMailInWice(event) {
   config = getConfig();
 
   var emptyWiceServer = $.isEmptyObject(config.wiceServer);

@@ -75,11 +75,11 @@
               <Group id="msgComposeCmdGroup">
                 <Label resid="groupLabel"/>
 
-                <Control xsi:type="Button" id="msgComposeInsertDefaultGist">
-                  <Label resid="insertDefaultGistLabel"/>
+                <Control xsi:type="Button" id="saveMail">
+                  <Label resid="saveMailLabel"/>
                   <Supertip>
-                    <Title resid="insertDefaultGistTitle"/>
-                    <Description resid="insertDefaultGistDesc"/>
+                    <Title resid="saveMailTitle"/>
+                    <Description resid="saveMailDesc"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16"/>
@@ -87,14 +87,14 @@
                     <bt:Image size="80" resid="icon80"/>
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>insertDefaultGist</FunctionName>
+                    <FunctionName>saveMailInWice</FunctionName>
                   </Action>
                 </Control>
-                <Control xsi:type="Button" id="msgComposeInsertGist">
-                  <Label resid="insertGistLabel"/>
+                <Control xsi:type="Button" id="settings">
+                  <Label resid="settingsLabel"/>
                   <Supertip>
-                    <Title resid="insertGistTitle"/>
-                    <Description resid="insertGistDesc"/>
+                    <Title resid="settingsTitle"/>
+                    <Description resid="settingsDesc"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16"/>
@@ -102,7 +102,7 @@
                     <bt:Image size="80" resid="icon80"/>
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="insertGistPaneUrl"/>
+                    <SourceLocation resid="settingsPaneUrl"/>
                   </Action>
                 </Control>
               </Group>
@@ -123,22 +123,22 @@
       <bt:Urls>
         <bt:Url id="functionFile" DefaultValue="https://localhost:3000/function-file/function-file.html"/>
         <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://localhost:3000/index.html"/>
-        <bt:Url id="insertGistPaneUrl" DefaultValue="https://localhost:3000/msg-compose/insert-gist.html"/>
+        <bt:Url id="settingsPaneUrl" DefaultValue="https://localhost:3000/msg-compose/insert-gist.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="Git the gist"/>
-        <bt:String id="customTabLabel" DefaultValue="My Add-in Tab"/>
+        <!-- <bt:String id="customTabLabel" DefaultValue="My Add-in Tab"/>
         <bt:String id="paneReadButtonLabel" DefaultValue="Display all properties"/>
-        <bt:String id="paneReadSuperTipTitle" DefaultValue="Get all properties"/>
-        <bt:String id="insertGistLabel" DefaultValue="Settings"/>
-        <bt:String id="insertGistTitle" DefaultValue="Settings"/>
-        <bt:String id="insertDefaultGistLabel" DefaultValue="Save Email"/>
-        <bt:String id="insertDefaultGistTitle" DefaultValue="Save Email"/>
+        <bt:String id="paneReadSuperTipTitle" DefaultValue="Get all properties"/> -->
+        <bt:String id="settingsLabel" DefaultValue="Settings"/>
+        <bt:String id="settingsTitle" DefaultValue="Settings"/>
+        <bt:String id="saveMailLabel" DefaultValue="Save Email"/>
+        <bt:String id="saveMailTitle" DefaultValue="Save Email"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="paneReadSuperTipDescription" DefaultValue="Opens a pane displaying all available properties. This is an example of a button that opens a task pane."/>
-        <bt:String id="insertGistDesc" DefaultValue="Displays a list of your gists and allows you to insert their contents into the current message"/>
-        <bt:String id="insertDefaultGistDesc" DefaultValue="Inserts the content of the gist you mark as default into the current message"/>
+        <!-- <bt:String id="paneReadSuperTipDescription" DefaultValue="Opens a pane displaying all available properties. This is an example of a button that opens a task pane."/> -->
+        <bt:String id="settingsDesc" DefaultValue="Set up Wice CRM credentials"/>
+        <bt:String id="saveMailDesc" DefaultValue="Save an email in Wice CRM"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
