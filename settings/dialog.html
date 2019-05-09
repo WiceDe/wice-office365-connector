@@ -28,46 +28,43 @@
           </div>
           <div class="ms-MessageBar-text">
             Oops! It looks like you haven't configured <strong>Wice CRM</strong> yet.
-            <br />
-            Please configure your <strong>Wice CRM</strong> credentials then try that action again!
+            <br/>
+            Please insert your <strong>Wice CRM</strong> credentials, then try that action again!
           </div>
         </div>
       </div>
-      <div class="ms-font-xxl">Settings</div>
-      <div class="ms-Grid">
-        <form>
-          <div class="ms-Grid-row">
-            <div class="ms-TextField">
-              <label class="ms-Label">Wice Server</label>
-              <input class="ms-TextField-field" id="wice-server" type="text" value="" placeholder="Please enter your Wice Server">
-            </div>
+      <!-- <div class="ms-font-xxl">Settings</div> -->
+      <div class="ms-Grid" id="settings-form">
+        <!-- <div class="ms-Grid-row">
+          <div class="ms-TextField">
+            <label class="ms-Label">GitHub Username</label>
+            <input class="ms-TextField-field" id="github-user" type="text" value="" placeholder="Please enter your GitHub username">
           </div>
-          <div class="ms-Grid-row">
-            <div class="ms-TextField">
-              <label class="ms-Label">Mandant</label>
-              <input class="ms-TextField-field" id="mandant" type="text" value="" placeholder="Please enter your mandant">
-            </div>
+        </div> -->
+        <div class="ms-Grid-row">
+          <div class="ms-TextField">
+            <label class="ms-Label">Wice Server</label>
+            <input class="ms-TextField-field" id="wice-server" type="text" value="" placeholder="Wice Server">
           </div>
-          <div class="ms-Grid-row">
-            <div class="ms-TextField">
-              <label class="ms-Label">Username</label>
-              <input class="ms-TextField-field" id="username" type="text" value="" placeholder="Please enter your username">
-            </div>
+        </div>
+        <div class="ms-Grid-row">
+          <div class="ms-TextField">
+            <label class="ms-Label">Mandant</label>
+            <input class="ms-TextField-field" id="mandant" type="text" value="" placeholder="Mandant">
           </div>
-          <div class="ms-Grid-row">
-            <div class="ms-TextField">
-              <label class="ms-Label">Password</label>
-              <input class="ms-TextField-field" id="password" type="password" value="" placeholder="Please enter your password">
-            </div>
+        </div>
+        <div class="ms-Grid-row">
+          <div class="ms-TextField">
+            <label class="ms-Label">Username</label>
+            <input class="ms-TextField-field" id="username" type="text" value="" placeholder="Username">
           </div>
-          <div class="ms-Dialog-actions">
-            <div class="ms-Dialog-actionsRight">
-              <button class="ms-Dialog-action ms-Button ms-Button--primary" id="settings-done" type="submit" >
-                <span class="ms-Button-label">Done</span>
-              </button>
-            </div>
+        </div>
+        <div class="ms-Grid-row">
+          <div class="ms-TextField">
+            <label class="ms-Label">Password</label>
+            <input class="ms-TextField-field" id="password" type="password" value="" placeholder="Password">
           </div>
-        </form>
+        </div>
         <div class="error-display ms-Grid-row">
           <div class="ms-font-l ms-fontWeight-semibold">An error occurred:</div>
           <pre><code id="error-text"></code></pre>
@@ -78,16 +75,21 @@
           </ul>
         </div> -->
       </div>
+      <div class="ms-Dialog-actions">
+        <div class="ms-Dialog-actionsRight">
+          <button class="ms-Dialog-action ms-Button ms-Button--primary" id="settings-done" disabled>
+            <span class="ms-Button-label">Done</span>
+          </button>
+        </div>
+      </div>
     </section>
   </main>
-  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="../node_modules/core-js/client/core.js"></script>
+  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="../node_modules/office-ui-fabric-js/dist/js/fabric.js"></script>
 
-  <!-- <script type="text/javascript" src="../helpers/gist-api.js"></script> -->
-  <script type="text/javascript" src="../node_modules/urijs/src/URI.min.js"></script>
+  <script type="text/javascript" src="../helpers/wice-api.js"></script>
   <script type="text/javascript" src="../helpers/addin-config.js"></script>
-  <script type="text/javascript" src="../function-file/function-file.js"></script>
   <script type="text/javascript" src="dialog.js"></script>
 </body>
 

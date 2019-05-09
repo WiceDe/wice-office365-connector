@@ -8,11 +8,8 @@
 
     jQuery(document).ready(function() {
 
-      console.log('IN SETTINGS');
-
       config = getConfig();
 
-      console.log('CONFIG: ', config);
       // Check if add-in is configured
       // if (config && config.gitHubUserName) {
       //   // If configured load the gist list
@@ -21,9 +18,9 @@
       //   // Not configured yet
       //   $('#not-configured').show();
       // }
-      //
-      // // When insert button is selected, build the content
-      // // and insert into the body.
+
+      // When insert button is selected, build the content
+      // and insert into the body.
       // $('#insert-button').on('click', function() {
       //   var gistId = $('.ms-ListItem.is-selected').children('.gist-id').val();
       //   getGist(gistId, function(gist, error) {
@@ -47,17 +44,16 @@
       //   });
       // });
 
+      $('#not-configured').show();
       // When the settings icon is selected, open the settings dialog
       $('#settings-icon').on('click', function() {
-        console.log('SETTINGS clicked ...');
         // Display settings dialog
-        var url = new URI('../credentials/dialog.html').absoluteTo(window.location).toString();
-        if (config) {
-          // If the add-in has already been configured, pass the existing values
-          // to the dialog
-          console.log('IN IF CONFIG');
-          // url = url + '?gitHubUserName=' + config.gitHubUserName + '&defaultGistId=' + config.defaultGistId;
-        }
+        var url = new URI('../settings/dialog.html').absoluteTo(window.location).toString();
+        // if (config) {
+        //   // If the add-in has already been configured, pass the existing values
+        //   // to the dialog
+        //   url = url + '?gitHubUserName=' + config.gitHubUserName + '&defaultGistId=' + config.defaultGistId;
+        // }
 
         var dialogOptions = {
           width: 20,
@@ -73,7 +69,7 @@
       })
     });
   };
-  //
+
   // function loadGists(user) {
   //   $('#error-display').hide();
   //   $('#not-configured').hide();
@@ -93,13 +89,13 @@
   //   $(this).addClass('is-selected');
   //   $('#insert-button').removeAttr('disabled');
   // }
-
-  function showError(error) {
-    $('#not-configured').hide();
-    $('#gist-list-container').hide();
-    $('#error-display').text(error);
-    $('#error-display').show();
-  }
+  //
+  // function showError(error) {
+  //   $('#not-configured').hide();
+  //   $('#gist-list-container').hide();
+  //   $('#error-display').text(error);
+  //   $('#error-display').show();
+  // }
 
   function receiveMessage(message) {
     config = JSON.parse(message.message);
