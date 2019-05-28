@@ -49,7 +49,7 @@ function callbackEws(asyncResult, headersLoadedCallback) {
         var header = null;
         if (asyncResult.value) {
             header = extractHeadersFromXml(asyncResult.value);
-            console.log('HEADER: ', header);
+            // console.log('HEADER: ', header);
 
             // We might not have a prop and also no error. This is OK if the prop is just missing.
             if (header && !header.prop) {
@@ -122,18 +122,13 @@ function extractHeadersFromXml(xml) {
 }
 
 function saveMailInWice(event) {
-  // console.log('MAIL ITEM: ', Office.context.mailbox.item);
-
   var itemHeaderRequest = getHeadersRequest(Office.context.mailbox.item.itemId);
   var envelope = getSoapEnvelope(itemHeaderRequest);
   Office.context.mailbox.makeEwsRequestAsync(envelope, function (asyncResult) {
-      // console.log('HERE');
-      // console.log(asyncResult);
       callbackEws(asyncResult, null);
   });
 
   Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
-    // console.log(result);
     // getHeaders(result.value, null);
     // try {
     //     if (result.status === "succeeded") {
@@ -160,6 +155,7 @@ function saveMailInWice(event) {
   var emptyMandant = $.isEmptyObject(config.mandant);
   var emptyUsername = $.isEmptyObject(config.username);
   var emptyPassword = $.isEmptyObject(config.password);
+  var cookie = config.cookie;
 
   // Check if the add-in has been configured
   if (!emptyWiceServer && !emptyMandant && !emptyUsername && !emptyPassword) {
@@ -170,37 +166,24 @@ function saveMailInWice(event) {
       },
       function callback(result) {
         // console.log('HTML FORMAT: ', result);
-        var url = config.wiceServer + "/pserv/base/thunderbird";
-        // TODO: Save email in wice
-        // Save mail functions is in helpers
-        saveMail();
-      });
 
-    // Get the default gist content and insert
-    // try {
-    //   getGist(config.defaultGistId, function(gist, error) {
-    //     if (gist) {
-    //       buildBodyContent(gist, function(content, error) {
-    //         if (content) {
-    //           Office.context.mailbox.item.body.setSelectedDataAsync(content, {
-    //             coercionType: Office.CoercionType.Html
-    //           }, function(result) {
-    //             event.completed();
-    //           });
-    //         } else {
-    //           showError(error);
-    //           event.completed();
-    //         }
-    //       });
-    //     } else {
-    //       showError(error);
-    //       event.completed();
-    //     }
-    //   });
-    // } catch (err) {
-    //   showError(err);
-    //   event.completed();
-    // }
+        console.log(Office.context.mailbox.item.itemId);
+
+        const customMail = {
+          attachments: Office.context.mailbox.item.attachments,
+          body: result.value,
+          from: {
+            displayName:Office.context.mailbox.item.from.displayName,
+            emailAddress: Office.context.mailbox.item.from.emailAddress
+          },
+          date: Office.context.mailbox.item.dateTimeCreated,
+          internetMessageId: Office.context.mailbox.item.internetMessageId,
+          subject: Office.context.mailbox.item.subject,
+        };
+        var url = config.wiceServer + "/pserv/base/outlook365";
+        // Save mail functions is in helpers
+        saveMail(customMail, url, cookie);
+      });
 
   } else {
     // Save the event object so we can finish up later
