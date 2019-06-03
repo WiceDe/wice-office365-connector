@@ -205,14 +205,6 @@ function saveMailInWice() {
                 '      <ItemShape>' +
                 '        <t:BaseShape>Default</t:BaseShape>' +
                 '        <t:IncludeMimeContent>true</t:IncludeMimeContent>' +
-                '        <t:AdditionalProperties>' +
-                '            <t:FieldURI FieldURI="message:InternetMessageId"/>' +
-                '            <t:FieldURI FieldURI="item:DateTimeReceived"/>' +
-                '            <t:FieldURI FieldURI="item:Attachments"/>' +
-                '            <t:FieldURI FieldURI="message:From"/>' +
-                '            <t:FieldURI FieldURI="item:Subject"/>' +
-                '            <t:FieldURI FieldURI="item:Body"/>' +
-                '        </t:AdditionalProperties>' +
                 '      </ItemShape>' +
                 '      <ItemIds><t:ItemId Id="' + id + '"/></ItemIds>' +
                 '    </GetItem>' +
