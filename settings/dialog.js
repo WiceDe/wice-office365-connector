@@ -35,17 +35,20 @@
         };
         var url = $('#wice-server').val();
 
+        await createSession(credentials, async function(res, error) {
 
-        await createSession(credentials, async function(cookie, error) {
-          credentials.cookie = cookie
-          await setConfig(credentials, () => {
-            // settingsDialog.close();
-            // settingsDialog = null;
-            console.log('Credentials saved...');
-            return;
-          });
-
-          await sendMessage(JSON.stringify(credentials));
+          if (res.error) {
+            $("#credentials").css("display", "block");
+          } else {
+            credentials.cookie = res;
+            await setConfig(credentials, () => {
+              // settingsDialog.close();
+              // settingsDialog = null;
+              console.log('Credentials saved...');
+              return;
+            });
+            await sendMessage(JSON.stringify(credentials));
+          }
         });
       });
     });
