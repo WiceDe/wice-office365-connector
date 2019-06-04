@@ -1,7 +1,7 @@
 function createSession(credentials, callback) {
     const requestUrl = 'https://oihwice.wice-net.de/pserv/base/json';
 
-    const input = `method=login&mandant_name=${credentials.mandant}&username=${credentials.username}&password=${credentials.password}`;
+    var input = `method=login&mandant_name=${credentials.mandant}&username=${credentials.username}&password=${credentials.password}`;
 
     makePOSTRequest(requestUrl, input, function(res) {
         if (res) {
@@ -14,9 +14,10 @@ function createSession(credentials, callback) {
 function saveMail(email, url, cookie) {
     // console.log('Saving email ...');
 
-    const data = {
-        email,
-        cookie
+    var data = {
+        contents: email,
+        cookie: cookie,
+        save_message: 1
     };
 
     var xhr = new XMLHttpRequest();
@@ -25,7 +26,8 @@ function saveMail(email, url, cookie) {
     // send the collected data as JSON
     xhr.send(JSON.stringify(data));
     xhr.onloadend = function() {
-        //TODO: expect response from wice
+        // TODO: expect response from wice
+        console.log('RES: ', xhr);
     };
 }
 
