@@ -1,4 +1,4 @@
-async function createSession(credentials, callback) {
+function createSession(credentials, callback) {
     const requestUrl = 'https://oihwice.wice-net.de/pserv/base/json';
 
     const input = `method=login&mandant_name=${credentials.mandant}&username=${credentials.username}&password=${credentials.password}`;
