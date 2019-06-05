@@ -3,20 +3,18 @@
  * See LICENSE in the project root for license information.
  */
 
-
-
 $(document).ready(() => {
-    $('#run').click(run);
+  $('#run').click(run);
 });
-  
+
 // The initialize function must be run each time a new page is loaded
 Office.initialize = (reason) => {
-    $('#sideload-msg').hide();
-    $('#app-body').show();
+  $('#sideload-msg').hide();
+  $('#app-body').show();
 };
 
 async function run() {
-    /**
-         * Insert your Outlook code here
-         */
+  /**
+   * Insert your Outlook code here
+   */
 }
