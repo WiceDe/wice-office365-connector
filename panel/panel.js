@@ -5,11 +5,8 @@
   var settingsDialog;
 
   Office.initialize = function(reason) {
-
     jQuery(document).ready(function() {
-
       config = getConfig();
-
       $('#not-configured').show();
       // When the settings icon is selected, open the settings dialog
       $('#settings-icon').on('click', function() {

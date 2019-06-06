@@ -10,11 +10,6 @@ section {
   display: none;
 }
 
-.gist-list-container {
-  margin: 10px -8px;
-  display: none;
-}
-
 .list-title {
   border-bottom: 1px solid #a6a6a6;
   padding-bottom: 5px;

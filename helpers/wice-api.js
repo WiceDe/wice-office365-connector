@@ -14,9 +14,7 @@ function createSession(credentials, callback) {
 }
 
 //Create a session and get a cookie from Wice
-function saveMail(email, url, cookie) {
-  // console.log('Saving email ...');
-
+function saveMail(email, url, cookie, callback) {
   var data = {
     contents: email,
     cookie: cookie,
@@ -30,7 +28,7 @@ function saveMail(email, url, cookie) {
   xhr.send(JSON.stringify(data));
   xhr.onloadend = function() {
     // TODO: expect response from wice
-    console.log('RES: ', xhr);
+    callback(xhr);
   };
 }
 
