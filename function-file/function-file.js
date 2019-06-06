@@ -14,7 +14,6 @@ function showError(error) {
 
 var settingsDialog;
 
-// Save an email in Wice
 function saveMailInWice() {
   config = getConfig();
 
@@ -48,7 +47,6 @@ function saveMailInWice() {
         '    </GetItem>' +
         '  </soap:Body>' +
         '</soap:Envelope>';
-
       return result;
     }
 
@@ -62,9 +60,7 @@ function saveMailInWice() {
       var result = asyncResult.value;
       var context = asyncResult.context;
       var url = config.wiceServer + "/pserv/base/outlook365";
-
       saveMail(result, url, cookie);
-      //TODO:  Process the returned response here.
     }
   } else {
     // Save the event object so we can finish up later

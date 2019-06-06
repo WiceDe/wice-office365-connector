@@ -5,11 +5,11 @@ function createSession(credentials, callback) {
   var input = `method=login&mandant_name=${credentials.mandant}&username=${credentials.username}&password=${credentials.password}`;
 
   makePOSTRequest(requestUrl, input, function(res) {
-    console.log('RES: ', res);
-    if (res) {
-      return callback(res);
-    }
+    // if (res) {
+    //   return callback(res);
+    // }
     // console.log('False returned ...');
+    return callback(res);
   });
 }
 
@@ -66,7 +66,7 @@ function makePOSTRequest(url, parameters, callback) {
         callback(response.cookie);
       } else {
         console.log('Login data invalid');
-        callback(false);
+        callback(response);
       }
     }
   }
