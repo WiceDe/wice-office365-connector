@@ -36,10 +36,11 @@
         var url = $('#wice-server').val();
 
         await createSession(credentials, async function(res, error) {
-
           if (res.error) {
-            $("#credentials").css("display", "block");
+            $("#credentials-failed").css("display", "block");
+            $("#credentials-failed").fadeOut(5000);
           } else {
+            $("#credentials-success").css("display", "block");
             credentials.cookie = res;
             await setConfig(credentials, () => {
               // settingsDialog.close();
@@ -68,7 +69,10 @@
   }
 
   function sendMessage(message) {
-    Office.context.ui.messageParent(message);
+    setTimeout(function() {
+      Office.context.ui.messageParent(message);
+    }, 3000);
+
   }
 
   function getParameterByName(name, url) {
