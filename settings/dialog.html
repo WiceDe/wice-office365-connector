@@ -33,12 +33,20 @@
           </div>
         </div>
       </div>
-      <div id="credentials" style="display: none;" class="not-configured-error ms-MessageBar ms-MessageBar--error">
+      <div id="credentials-failed" style="display: none;" class="not-configured-error ms-MessageBar ms-MessageBar--error">
         <div class="ms-MessageBar-content">
           <div class="ms-MessageBar-icon">
             <i class="ms-Icon ms-Icon--Error"></i>
           </div>
-          <div class="ms-MessageBar-text"> Invalid credentials!</div>
+          <div id="credentials-text" class="ms-MessageBar-text">Invalid credentials!</div>
+        </div>
+      </div>
+      <div id="credentials-success" style="display: none;" class="not-configured-success ms-MessageBar ms-MessageBar--success">
+        <div class="ms-MessageBar-content">
+          <div class="ms-MessageBar-icon">
+            <i class="ms-Icon ms-Icon--Accept"></i>
+          </div>
+          <div id="credentials-text" class="ms-MessageBar-text">Credentials successfully saved!</div>
         </div>
       </div>
       <!-- <div class="ms-font-xxl">Settings</div> -->
@@ -71,16 +79,11 @@
           <div class="ms-font-l ms-fontWeight-semibold">An error occurred:</div>
           <pre><code id="error-text"></code></pre>
         </div>
-        <!-- <div class="gist-list-container ms-Grid-row">
-          <div class="list-title ms-font-xl ms-fontWeight-regular">Choose Default Gist</div>
-          <ul id="gist-list" class="ms-List">
-          </ul>
-        </div> -->
       </div>
       <div class="ms-Dialog-actions">
         <div class="ms-Dialog-actionsRight">
           <button class="ms-Dialog-action ms-Button ms-Button--primary" id="settings-done" disabled>
-            <span class="ms-Button-label">Done</span>
+            <span class="ms-Button-label">Save</span>
           </button>
         </div>
       </div>
