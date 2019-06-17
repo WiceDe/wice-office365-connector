@@ -39,6 +39,7 @@
           if (res.error) {
             $("#credentials-failed").css("display", "block");
             $("#credentials-failed").fadeOut(5000);
+
           } else {
             $("#credentials-success").css("display", "block");
             credentials.cookie = res;

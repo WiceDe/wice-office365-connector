@@ -60,7 +60,34 @@ function saveMailInWice() {
       var result = asyncResult.value;
       var context = asyncResult.context;
       var url = config.wiceServer + "/pserv/base/outlook365";
-      saveMail(result, url, cookie);
+
+      saveMail(result, url, cookie, function(cb) {
+        console.log('CB: ', cb.responseURL);
+        var url = "https://oihwice.wice-net.de";
+
+        window.location.replace(url);
+
+        // window.location.href = 'https://oihwice.wice-net.de';
+        // document.location.href = 'https://oihwice.wice-net.de';
+
+        // $('#test').prop("href", cb.responseURL);
+        // document.querySelector('#test').setAttribute('href', url);
+        // var attr = $('#test').attr('href');
+        // console.log(attr);
+
+        var url = new URI('./function-file.html').absoluteTo(window.location).toString();
+        var dialogOptions = {
+          width: 20,
+          height: 40,
+          displayInIframe: true
+        };
+
+        Office.context.ui.displayDialogAsync(url, dialogOptions, function(result) {
+          settingsDialog = result.value;
+          settingsDialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, receiveMessage);
+          settingsDialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogEventReceived, dialogClosed);
+        });
+      });
     }
   } else {
     // Save the event object so we can finish up later
