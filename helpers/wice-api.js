@@ -1,6 +1,7 @@
 // Create a session and get a cookie from Wice
 function createSession(credentials, callback) {
-  const requestUrl = 'https://oihwice.wice-net.de/pserv/base/json';
+  // const requestUrl = 'https://oihwice.wice-net.de/pserv/base/json';
+  const requestUrl = 'https://demo2.wice-net.de/pserv/base/json';
 
   var input = `method=login&mandant_name=${credentials.mandant}&username=${credentials.username}&password=${credentials.password}`;
 

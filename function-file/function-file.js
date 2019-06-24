@@ -62,10 +62,10 @@ function saveMailInWice() {
       var url = config.wiceServer + "/pserv/base/outlook365";
 
       saveMail(result, url, cookie, function(cb) {
-        console.log('CB: ', cb.responseURL);
-        var url = "https://oihwice.wice-net.de";
+        console.log('CB: ', cb);
+        // var url = "https://oihwice.wice-net.de";
 
-        window.location.replace(url);
+        // window.location.replace(url);
 
         // window.location.href = 'https://oihwice.wice-net.de';
         // document.location.href = 'https://oihwice.wice-net.de';
