@@ -6,10 +6,6 @@ function createSession(credentials, callback) {
   var input = `method=login&mandant_name=${credentials.mandant}&username=${credentials.username}&password=${credentials.password}`;
 
   makePOSTRequest(requestUrl, input, function(res) {
-    // if (res) {
-    //   return callback(res);
-    // }
-    // console.log('False returned ...');
     return callback(res);
   });
 }

@@ -9,7 +9,7 @@
       config = getConfig();
       $('#not-configured').show();
       // When the settings icon is selected, open the settings dialog
-      $('#settings-icon').on('click', function() {
+      $('#settings-field').on('click', function() {
         // Display settings dialog
         var url = new URI('../settings/dialog.html').absoluteTo(window.location).toString();
 
